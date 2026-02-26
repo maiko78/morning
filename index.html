@@ -444,11 +444,11 @@
   const btnArea = document.getElementById('btnArea');
 
   function formatDuration(ms) {
-    const s = Math.floor(ms / 1000);
-    const m = Math.floor(s / 60);
-    const sec = s % 60;
-    return `${String(m).padStart(2,'0')}:${String(sec).padStart(2,'0')}`;
-  }
+  const s = Math.floor(ms / 1000);
+  const m = Math.floor(s / 60);
+  const sec = s % 60;
+  return `${m}分${String(sec).padStart(2,'0')}秒`;
+}
 
   function formatDateTime(date) {
     const y = date.getFullYear();
@@ -552,7 +552,7 @@
   function copyAll() {
     if (records.length === 0) { showToast('コピーする記録がありません'); return; }
     const text = records.map(r =>
-      `${r.date} ${r.startTime} 起床｜起き上がり時間: ${r.durationStr}`
+      `${r.date} ${r.startTime} 起床｜布団から出るまで: ${r.durationStr}`
     ).join('\n');
     showCopyModal(text);
   }
